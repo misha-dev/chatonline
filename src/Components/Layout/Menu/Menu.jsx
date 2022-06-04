@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { User } from "../../User/User";
 import cl from "./Menu.module.css";
 
 export const Menu = () => {
@@ -14,7 +15,7 @@ export const Menu = () => {
             alt="Chat image"
           />
         </Link>
-        <div className="user">User</div>
+        <User />
       </div>
     </nav>
   );

@@ -11,14 +11,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  border: 1px solid #6f59e8;
+  border: 1px solid #3891fc;
   border-radius: 10px;
   font-size: 1.6rem;
   transition: background-color 0.2s linear;
 }
 
 .login:hover {
-  background-color: #6f59e8;
+  background-color: #3891fc;
   color: whitesmoke;
 }
 
