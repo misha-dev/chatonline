@@ -1,11 +1,25 @@
+import { useState } from "react";
 import { IoIosLogOut } from "react-icons/io";
 import { useAuth } from "../../hooks/useAuth";
+import { useFirebaseContext } from "../../hooks/useFirebaseContext";
 import cl from "./User.module.css";
 
 export const User = () => {
+  const { auth } = useFirebaseContext();
   const user = useAuth();
+  const [showUserOptions, setShowUserOptions] = useState(false);
+  const userOptionsClasses = [cl.userOptions];
+  if (showUserOptions) {
+    userOptionsClasses.push(cl.active);
+  }
+  console.log(userOptionsClasses);
   return (
-    <div className={cl.user}>
+    <div
+      onClick={() => {
+        setShowUserOptions(!showUserOptions);
+      }}
+      className={cl.user}
+    >
       <img
         alt=""
         src={user.photoURL}
@@ -16,9 +30,14 @@ export const User = () => {
         }}
       />
 
-      <div className={cl.userOptions}>
-        <div className={cl.logout}>
-          Logout <IoIosLogOut />
+      <div className={userOptionsClasses.join(" ")}>
+        <div
+          className={cl.option}
+          onClick={() => {
+            auth.signOut();
+          }}
+        >
+          Logout <IoIosLogOut style={{ marginLeft: "5px" }} />
         </div>
       </div>
     </div>
