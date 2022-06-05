@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Chat } from "./Components/Chat/Chat";
 import { Layout } from "./Components/Layout/Layout";
+import { Loader } from "./Components/Loader/Loader";
 import { Login } from "./Components/Login/Login";
 import { useAuth } from "./hooks/useAuth";
 import { useFirebaseContext } from "./hooks/useFirebaseContext";
@@ -12,7 +13,7 @@ function App() {
 
   return (
     <div className="App">
-      {logged && (
+      {logged ? (
         <Routes>
           <Route path="/chatonline" element={<Layout />}>
             {user ? (
@@ -22,6 +23,8 @@ function App() {
             )}
           </Route>
         </Routes>
+      ) : (
+        <Loader />
       )}
     </div>
   );
