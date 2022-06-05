@@ -1,0 +1,45 @@
+.usersWrapper {
+  width: 300px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-right: 2px solid rgb(228, 233, 237);
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.userCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 15px 15px 20px;
+  transition: box-shadow 0.2s linear, background-color 0.2s linear,
+    color 0.2s linear;
+  cursor: pointer;
+}
+
+.userCard:hover {
+  box-shadow: inset 0px 0px 1.5px black;
+}
+
+.userCard:not(.userCard:last-child) {
+  border-bottom: 0.2px solid rgba(108, 122, 137, 0.7);
+}
+
+.userCard img {
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+}
+
+.userName {
+  width: 156px;
+  font-size: 1.2rem;
+}
+
+input[type="radio"]:checked + div {
+  background-color: #2f70d2;
+  color: white;
+}

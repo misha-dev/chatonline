@@ -4,6 +4,7 @@
   justify-content: space-around;
   align-items: center;
   background-color: white;
+  border-bottom: 2px solid rgb(228, 233, 237);
 }
 
 .menu p {

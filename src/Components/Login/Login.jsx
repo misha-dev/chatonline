@@ -1,10 +1,9 @@
-import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { FirebaseContext } from "../../context/FirebaseContext";
+import { useFirebaseContext } from "../../hooks/useFirebaseContext";
 import cl from "./Login.module.css";
 
 export const Login = () => {
-  const { firestore, auth, firebase } = useContext(FirebaseContext);
+  const { firestore, auth, firebase } = useFirebaseContext();
   const login = async () => {
     const googleProvider = new firebase.auth.GoogleAuthProvider();
     const { user } = await auth.signInWithPopup(googleProvider);
