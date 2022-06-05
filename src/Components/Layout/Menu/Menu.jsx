@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "../../../hooks/useAuth";
 import { User } from "../../User/User";
 import cl from "./Menu.module.css";
 
 export const Menu = () => {
+  const user = useAuth();
+  console.log(user);
   return (
     <nav>
       <div className={cl.menu}>
@@ -15,7 +18,7 @@ export const Menu = () => {
             alt="Chat image"
           />
         </Link>
-        <User />
+        {user ? <User /> : <></>}
       </div>
     </nav>
   );
