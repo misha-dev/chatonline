@@ -5,7 +5,6 @@ import cl from "./Menu.module.css";
 
 export const Menu = () => {
   const user = useAuth();
-  console.log(user);
   return (
     <nav>
       <div className={cl.menu}>

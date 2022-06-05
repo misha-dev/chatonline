@@ -4,12 +4,23 @@ import { FirebaseContext } from "../../context/FirebaseContext";
 import cl from "./Login.module.css";
 
 export const Login = () => {
-  const { auth, firebase } = useContext(FirebaseContext);
+  const { firestore, auth, firebase } = useContext(FirebaseContext);
   const login = async () => {
     const googleProvider = new firebase.auth.GoogleAuthProvider();
     const { user } = await auth.signInWithPopup(googleProvider);
-    console.log(user);
+    firestore.collection("users").doc(user.uid).set({
+      uid: user.uid,
+      displayName: user.displayName,
+      email: user.email,
+      photoURL: user.photoURL,
+    });
+
+    // const userData = await firestore.collection("users").doc(user.uid).get();
+
+    // const userInfo = await userData.data();
+    // console.log(userInfo);
   };
+
   return (
     <div className={cl.loginWrapper}>
       <div onClick={login} className={cl.login}>

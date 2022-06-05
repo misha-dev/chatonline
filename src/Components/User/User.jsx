@@ -12,7 +12,6 @@ export const User = () => {
   if (showUserOptions) {
     userOptionsClasses.push(cl.active);
   }
-  console.log(userOptionsClasses);
   return (
     <div
       onClick={() => {
