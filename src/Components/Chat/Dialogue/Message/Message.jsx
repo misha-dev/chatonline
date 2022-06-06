@@ -1,17 +1,25 @@
+import { useAuth } from "../../../../hooks/useAuth";
 import cl from "./Message.module.css";
-// {
-//   uid, photoURL, displayName, message;
-// }
-export const Message = () => {
+
+export const Message = ({ uid, photoURL, message }) => {
+  const user = useAuth();
+  const currentUserMessage = user.uid === uid;
   return (
-    <div className={cl.messageWrapper}>
-      <img src="k" alt="" />
-      <div className={cl.message}>
-        jdsklasdjfasdkskfjjksfjkfsdajkfdsjdsklasdjfasdkskfjjksfjkfsdajkfds
-        jdsklasdjfasdkskfjjksfjkfsdajkfds jdsklasdjfasdkskfjjksfjkfsdajkfds
-        jdsklasdjfasdkskfjjksfjkfsdajkfds jdsklasdjfasdkskfjjksfjkfsdajkfds
-        jdsklasdjfasdkskfjjksfjkfsdajkfds jdsklasdjfasdkskfjjksfjkfsdajkfds
-      </div>
+    <div
+      className={cl.messageWrapper}
+      style={{ justifyContent: currentUserMessage ? "flex-end" : "flex-start" }}
+    >
+      {currentUserMessage ? (
+        <>
+          <div className={cl.message}>{message}</div>
+          <img style={{ marginLeft: "5px" }} src={photoURL} alt="" />
+        </>
+      ) : (
+        <>
+          <img style={{ marginRight: "5px" }} src={photoURL} alt="" />
+          <div className={cl.message}>{message}</div>
+        </>
+      )}
     </div>
   );
 };

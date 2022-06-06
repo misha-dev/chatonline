@@ -6,6 +6,7 @@ import { hashDialogueId } from "../../../utils/hashDialogueId";
 import { LoaderMessages } from "../../Loaders/LoaderMessages/LoaderMessages";
 import cl from "./Dialogue.module.css";
 import { EmptyDialogue } from "./EmptyDialogue/EmptyDialogue";
+import { Message } from "./Message/Message";
 
 export const Dialogue = ({ userCurrent, userIdDialogue }) => {
   const [message, setMessage] = useState("");
@@ -18,6 +19,10 @@ export const Dialogue = ({ userCurrent, userIdDialogue }) => {
   );
   console.log(messages);
   const sendMessage = () => {
+    if (message.trim() === "") {
+      setMessage("");
+      return;
+    }
     firestore.collection("messages").add({
       access: hashId,
       uid: userCurrent.uid,
@@ -41,7 +46,15 @@ export const Dialogue = ({ userCurrent, userIdDialogue }) => {
         ) : messages.length === 0 ? (
           <EmptyDialogue />
         ) : (
-          <div>Some data</div>
+          messages.map((message) => {
+            return (
+              <Message
+                message={message.message}
+                uid={message.uid}
+                photoURL={message.photoURL}
+              />
+            );
+          })
         )}
       </div>
 
