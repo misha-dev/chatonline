@@ -3,7 +3,7 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import { LoaderUsers } from "../../Loaders/LoaderUsers/LoaderUsers";
 import cl from "./Users.module.css";
 
-export const Users = ({ userCurrent, firestore }) => {
+export const Users = ({ userCurrent, firestore, setUserIdDialogue }) => {
   const [users] = useCollectionData(firestore.collection("users"));
   return (
     <div className={cl.usersWrapper}>
@@ -14,7 +14,7 @@ export const Users = ({ userCurrent, firestore }) => {
               <label key={user.uid}>
                 <input
                   onChange={() => {
-                    console.log(user.uid);
+                    setUserIdDialogue(user.uid);
                   }}
                   value={user.uid}
                   type="radio"
