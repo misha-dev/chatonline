@@ -18,15 +18,7 @@ export const User = () => {
       }}
       className={cl.user}
     >
-      <img
-        alt=""
-        src={user.photoURL}
-        style={{
-          background: `url(${
-            process.env.PUBLIC_URL + "/images/userPreview.png"
-          }) no-repeat center center/cover`,
-        }}
-      />
+      <img alt="" src={user.photoURL} />
 
       <div className={userOptionsClasses.join(" ")}>
         <div

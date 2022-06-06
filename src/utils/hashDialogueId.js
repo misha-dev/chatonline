@@ -7,5 +7,5 @@ export const hashDialogueId = (str1, str2) => {
     hash += str2.charCodeAt(index);
   }
 
-  return hash * 11;
+  return JSON.stringify(hash * 11);
 };

@@ -29,9 +29,23 @@ input[type="radio"] {
 }
 
 .userCard img {
+  position: relative;
   height: 40px;
   width: 40px;
   margin-right: 10px;
+  border-radius: 50%;
+}
+
+.userCard img::after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background: url("../../../images/userPreview.png") no-repeat center
+    center/cover;
 }
 
 .userName {

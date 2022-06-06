@@ -19,7 +19,11 @@ export const Chat = () => {
         firestore={firestore}
       />
       <div className={cl.dialogueArea}>
-        {userIdDialogue !== -1 ? <Dialogue /> : <BlankDialogue />}
+        {userIdDialogue !== -1 ? (
+          <Dialogue userCurrent={userCurrent} userIdDialogue ={userIdDialogue}/>
+        ) : (
+          <BlankDialogue />
+        )}
       </div>
     </div>
   );

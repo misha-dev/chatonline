@@ -22,15 +22,7 @@ export const Users = ({ userCurrent, firestore, setUserIdDialogue }) => {
               />
 
               <div className={cl.userCard}>
-                <img
-                  alt=""
-                  src={user.photoURL}
-                  style={{
-                    background: `url(${
-                      process.env.PUBLIC_URL + "/images/userPreview.png"
-                    }) no-repeat center center/cover`,
-                  }}
-                />
+                <img alt="" src={user.photoURL} />
 
                 <div className={cl.userName}>{user.displayName}</div>
               </div>

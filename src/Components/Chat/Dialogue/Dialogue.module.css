@@ -12,7 +12,7 @@
   height: 90%;
   flex-direction: column;
   border: 1px solid green;
-  /* background-color: aqua; */
+  padding: 20px;
 }
 
 .sendMessageWrapper {
@@ -30,7 +30,7 @@
   border-radius: 10px;
   background-color: rgba(56, 145, 252, 0.2);
   font-size: 1.1rem;
-  width: 95%;
+  width: 98%;
   height: 100%;
   line-height: 1.3rem;
   transition: background-color 0.2s linear;
