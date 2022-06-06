@@ -1,8 +1,7 @@
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useFirebaseContext } from "./useFirebaseContext";
+import { auth } from "../firebase/config";
 
 export const useAuth = () => {
-  const { auth } = useFirebaseContext();
   const [user] = useAuthState(auth);
   return user;
 };

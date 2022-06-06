@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Chat } from "./Components/Chat/Chat";
 import { Layout } from "./Components/Layout/Layout";
-import { Loader } from "./Components/Loader/Loader";
+import { Loader } from "./Components/Loaders/LoaderMain/Loader";
 import { Login } from "./Components/Login/Login";
 import { useAuth } from "./hooks/useAuth";
 import { useFirebaseContext } from "./hooks/useFirebaseContext";

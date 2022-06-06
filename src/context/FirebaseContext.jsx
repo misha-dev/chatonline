@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { auth, firebase, firestore } from "../firebase/config";
+import { auth } from "../firebase/config";
 
 export const FirebaseContext = createContext(null);
 
@@ -12,7 +12,7 @@ export const FirebaseContextProvider = ({ children }) => {
     });
   }, []);
   return (
-    <FirebaseContext.Provider value={{ firebase, firestore, auth, logged }}>
+    <FirebaseContext.Provider value={{ logged }}>
       {children}
     </FirebaseContext.Provider>
   );

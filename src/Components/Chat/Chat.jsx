@@ -1,12 +1,13 @@
+import { useState } from "react";
+import { firestore } from "../../firebase/config";
 import { useAuth } from "../../hooks/useAuth";
-import { useFirebaseContext } from "../../hooks/useFirebaseContext";
 import cl from "./Chat.module.css";
 import { Dialogue } from "./Dialogue/Dialogue";
 import { Users } from "./Users/Users";
 
 export const Chat = () => {
-  const { firestore } = useFirebaseContext();
   const userCurrent = useAuth();
+  const [userIdDialogue, setUserIdDialogue] = useState(-1)
   // const [messages, loading] = useCollectionData(firestore.collection("messages"))
 
   return (

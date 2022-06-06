@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { IoIosLogOut } from "react-icons/io";
+import { auth } from "../../firebase/config";
 import { useAuth } from "../../hooks/useAuth";
-import { useFirebaseContext } from "../../hooks/useFirebaseContext";
 import cl from "./User.module.css";
 
 export const User = () => {
-  const { auth } = useFirebaseContext();
   const user = useAuth();
   const [showUserOptions, setShowUserOptions] = useState(false);
   const userOptionsClasses = [cl.userOptions];
