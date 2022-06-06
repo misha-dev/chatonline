@@ -28,11 +28,17 @@ input[type="radio"] {
   border-bottom: 0.2px solid rgba(108, 122, 137, 0.7);
 }
 
+.wrapperImg {
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+  border-radius: 50%;
+  overflow: hidden;
+}
 .userCard img {
   position: relative;
   height: 40px;
   width: 40px;
-  margin-right: 10px;
   border-radius: 50%;
 }
 
