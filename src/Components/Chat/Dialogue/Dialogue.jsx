@@ -20,6 +20,7 @@ export const Dialogue = ({ userCurrent, userIdDialogue }) => {
   const sendMessage = () => {
     firestore.collection("messages").add({
       access: hashId,
+      uid: userCurrent.uid,
       displayName: userCurrent.displayName,
       photoURL: userCurrent.photoURL,
       message: message.trim(),
