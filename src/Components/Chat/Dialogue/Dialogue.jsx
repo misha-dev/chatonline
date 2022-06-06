@@ -5,6 +5,7 @@ import { firebase, firestore } from "../../../firebase/config";
 import { hashDialogueId } from "../../../utils/hashDialogueId";
 import { LoaderMessages } from "../../Loaders/LoaderMessages/LoaderMessages";
 import cl from "./Dialogue.module.css";
+import { EmptyDialogue } from "./EmptyDialogue/EmptyDialogue";
 
 export const Dialogue = ({ userCurrent, userIdDialogue }) => {
   const [message, setMessage] = useState("");
@@ -37,7 +38,7 @@ export const Dialogue = ({ userCurrent, userIdDialogue }) => {
         {messagesLoading ? (
           <LoaderMessages />
         ) : messages.length === 0 ? (
-          <div>Empty</div>
+          <EmptyDialogue />
         ) : (
           <div>Some data</div>
         )}
