@@ -1,4 +1,4 @@
-const hash = (str1, str2) => {
+export const hashDialogueId = (str1, str2) => {
   let hash = 0;
   for (let index = 0; index < str1.length; index++) {
     hash += str1.charCodeAt(index);
@@ -7,8 +7,5 @@ const hash = (str1, str2) => {
     hash += str2.charCodeAt(index);
   }
 
-  return hash * 22;
+  return hash * 11;
 };
-
-console.log(hash("great", "misha"));
-console.log(hash("misha", "great"));

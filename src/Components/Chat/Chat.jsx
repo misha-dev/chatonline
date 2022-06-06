@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { firestore } from "../../firebase/config";
+import { auth, firestore } from "../../firebase/config";
 import { useAuth } from "../../hooks/useAuth";
 import { BlankDialogue } from "./BlankDialogue/BlankDialogue";
 import cl from "./Chat.module.css";
@@ -9,7 +9,7 @@ import { Users } from "./Users/Users";
 export const Chat = () => {
   const userCurrent = useAuth();
   const [userIdDialogue, setUserIdDialogue] = useState(-1);
-  // const [messages, loading] = useCollectionData(firestore.collection("messages"))
+  const currentUid = auth.currentUser.uid;
 
   return (
     <div className={cl.chatWrapper}>

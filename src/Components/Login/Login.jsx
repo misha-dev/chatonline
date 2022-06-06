@@ -6,6 +6,7 @@ export const Login = () => {
   const login = async () => {
     const googleProvider = new firebase.auth.GoogleAuthProvider();
     const { user } = await auth.signInWithPopup(googleProvider);
+
     firestore.collection("users").doc(user.uid).set({
       uid: user.uid,
       displayName: user.displayName,

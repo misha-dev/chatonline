@@ -1,0 +1,59 @@
+.dialogueWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-shadow: inset 0px 0px 4px #3891fc;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.messagesWrapper {
+  display: flex;
+  height: 90%;
+  flex-direction: column;
+  border: 1px solid green;
+  /* background-color: aqua; */
+}
+
+.sendMessageWrapper {
+  height: 10%;
+  /* border: 1px solid red; */
+  display: flex;
+  align-items: center;
+}
+
+.message {
+  resize: none;
+  border: 1px solid #3891fc;
+  padding: 5px;
+  outline: none;
+  border-radius: 10px;
+  background-color: rgba(56, 145, 252, 0.2);
+  font-size: 1.1rem;
+  width: 95%;
+  height: 100%;
+  line-height: 1.3rem;
+  transition: background-color 0.2s linear;
+}
+
+.message:focus {
+  background-color: rgba(56, 145, 252, 0.5);
+}
+
+.sendMessage {
+  cursor: pointer;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  margin-left: 5px;
+  background-color: #3891fc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sendIcon {
+  font-size: 1rem;
+  color: whitesmoke;
+  margin-left: 2px;
+}
