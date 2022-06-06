@@ -1,8 +1,33 @@
 .messageWrapper {
-    height: 100px;
-    width: 300px;
-    border: 1px solid red;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 10px;
+  color: white;
+}
+
+.messageWrapper img {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.messageWrapper img::after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background: url("../../../../images//userPreview.png") no-repeat center
+    center/cover;
+}
+
+.message {
+  padding: 10px 15px;
+  border-radius: 35px;
+  background-color: #3891fc;
+  margin-left: 5px;
+  width: 80%;
 }

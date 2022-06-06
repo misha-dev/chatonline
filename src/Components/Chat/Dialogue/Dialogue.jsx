@@ -3,8 +3,8 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import { IoMdSend } from "react-icons/io";
 import { firebase, firestore } from "../../../firebase/config";
 import { hashDialogueId } from "../../../utils/hashDialogueId";
+import { LoaderMessages } from "../../Loaders/LoaderMessages/LoaderMessages";
 import cl from "./Dialogue.module.css";
-import { Message } from "./Message/Message";
 
 export const Dialogue = ({ userCurrent, userIdDialogue }) => {
   const [message, setMessage] = useState("");
@@ -15,16 +15,6 @@ export const Dialogue = ({ userCurrent, userIdDialogue }) => {
       .where("access", "==", hashId)
       .orderBy("createdAt")
   );
-  // const messages = firestore
-  //   .collection("messages")
-  //   .where("access", "==", hashId)
-  //   .orderBy("createdAt")
-  //   .get()
-  //   .then((snapshots) => {
-  //     snapshots.docs.forEach((doc) => {
-  //       console.log(doc.data());
-  //     });
-  //   });
   console.log(messages);
   const sendMessage = () => {
     firestore.collection("messages").add({
@@ -44,7 +34,13 @@ export const Dialogue = ({ userCurrent, userIdDialogue }) => {
   return (
     <div className={cl.dialogueWrapper}>
       <div className={cl.messagesWrapper}>
-        <Message />
+        {messagesLoading ? (
+          <LoaderMessages />
+        ) : messages.length === 0 ? (
+          <div>Empty</div>
+        ) : (
+          <div>Some data</div>
+        )}
       </div>
 
       <div className={cl.sendMessageWrapper}>

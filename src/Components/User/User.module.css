@@ -6,6 +6,7 @@
 }
 
 .user img {
+  position: relative;
   cursor: pointer;
   border-radius: 50%;
 }
