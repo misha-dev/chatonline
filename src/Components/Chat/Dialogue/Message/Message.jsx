@@ -1,5 +1,5 @@
 import { useAuth } from "../../../../hooks/useAuth";
-import { toDateTime } from "../../../../images/toDateTime";
+import { toDateTime } from "../../../../utils/toDateTime";
 import cl from "./Message.module.css";
 
 export const Message = ({ uid, photoURL, message, createdAt }) => {
