@@ -14,10 +14,6 @@ export const Login = () => {
       photoURL: user.photoURL,
     });
 
-    // const userData = await firestore.collection("users").doc(user.uid).get();
-
-    // const userInfo = await userData.data();
-    // console.log(userInfo);
   };
 
   return (

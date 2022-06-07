@@ -1,0 +1,41 @@
+.sendMessageWrapper {
+  height: 8%;
+  display: flex;
+  align-items: center;
+}
+
+.message {
+  resize: none;
+  border: 1px solid rgba(56, 145, 252, 0.3);
+  padding: 5px;
+  outline: none;
+  border-radius: 10px;
+  background-color: rgba(56, 145, 252, 0.15);
+  font-size: 1.1rem;
+  width: 98%;
+  height: 100%;
+  line-height: 1.3rem;
+  transition: background-color 0.2s linear;
+}
+
+.message:focus {
+  background-color: rgba(56, 145, 252, 0.3);
+}
+
+.sendMessage {
+  cursor: pointer;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  margin-left: 5px;
+  background-color: #3891fc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sendIcon {
+  font-size: 1rem;
+  color: whitesmoke;
+  margin-left: 2px;
+}

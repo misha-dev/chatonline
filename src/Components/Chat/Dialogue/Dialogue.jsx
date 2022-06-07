@@ -1,7 +1,6 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
-import { IoMdSend } from "react-icons/io";
-import { firebase, firestore } from "../../../firebase/config";
+import { firestore } from "../../../firebase/config";
 import { useScrollbar } from "../../../hooks/useScrollbar";
 import { hashDialogueId } from "../../../utils/hashDialogueId";
 import { LoaderMessages } from "../../Loaders/LoaderMessages/LoaderMessages";
@@ -9,8 +8,9 @@ import cl from "./Dialogue.module.css";
 import { EmptyDialogue } from "./EmptyDialogue/EmptyDialogue";
 import { Message } from "./Message/Message";
 
+import { SendMessage } from "./SendMessage/SendMessage";
+
 export const Dialogue = ({ userCurrent, userIdDialogue }) => {
-  const [message, setMessage] = useState("");
   const messagesForScrollbar = useRef();
   const hashId = hashDialogueId(userCurrent.uid, userIdDialogue);
   const [messages, messagesLoading] = useCollectionData(
@@ -20,31 +20,13 @@ export const Dialogue = ({ userCurrent, userIdDialogue }) => {
       .orderBy("createdAt")
   );
 
+
+  console.log("render");
+
   const scroll = messages?.length > 10;
 
   useScrollbar(messagesForScrollbar, scroll);
-  console.log(messages);
-  const sendMessage = () => {
-    if (message.trim() === "") {
-      setMessage("");
-      return;
-    }
-    firestore.collection("messages").add({
-      access: hashId,
-      uid: userCurrent.uid,
-      displayName: userCurrent.displayName,
-      photoURL: userCurrent.photoURL,
-      message: message.trim(),
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-    });
-    setMessage("");
-  };
-  const handleKeyEnter = (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      sendMessage();
-    }
-  };
+
   return (
     <div className={cl.dialogueWrapper}>
       <div className={cl.messagesWrapper}>
@@ -73,22 +55,7 @@ export const Dialogue = ({ userCurrent, userIdDialogue }) => {
         )}
       </div>
 
-      <div className={cl.sendMessageWrapper}>
-        <textarea
-          autoComplete="off"
-          value={message}
-          onChange={(e) => {
-            setMessage(e.target.value);
-          }}
-          onKeyDown={handleKeyEnter}
-          className={cl.message}
-          placeholder="Enter a message"
-        ></textarea>
-
-        <div onClick={sendMessage} className={cl.sendMessage}>
-          <IoMdSend className={cl.sendIcon} />
-        </div>
-      </div>
+      <SendMessage hashId={hashId} userCurrent={userCurrent} />
     </div>
   );
 };

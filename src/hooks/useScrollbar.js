@@ -1,17 +1,17 @@
 import OverlayScrollbars from "overlayscrollbars";
 import { useEffect } from "react";
 
-const config = {};
-
+const options = {};
 export const useScrollbar = (root, hasScroll) => {
   useEffect(() => {
-    let overlayScrollbar;
+    let scrollBars;
     if (root.current && hasScroll) {
-      overlayScrollbar = OverlayScrollbars(root.current, config);
+      scrollBars = OverlayScrollbars(root.current, options);
     }
+
     return () => {
-      if (overlayScrollbar) {
-        overlayScrollbar.destroy();
+      if (scrollBars) {
+        scrollBars.destroy();
       }
     };
   }, [root, hasScroll]);
