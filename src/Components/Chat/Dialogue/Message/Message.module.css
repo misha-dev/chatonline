@@ -1,7 +1,7 @@
 .messageWrapper {
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 12px;
   color: white;
 }
 
@@ -24,8 +24,25 @@
 }
 
 .message {
+  position: relative;
   padding: 10px 15px;
   border-radius: 35px;
   background-color: #3891fc;
   max-width: 80%;
+}
+
+.dateCreation {
+  position: absolute;
+  top: 110%;
+  color: grey;
+  width: 120px;
+  font-size: 0.57rem;
+}
+
+.dateCreationRight {
+  left: 100%;
+  transform: translateX(-55%);
+}
+.dateCreationLeft {
+  left: 3px;
 }

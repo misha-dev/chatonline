@@ -47,12 +47,15 @@ export const Dialogue = ({ userCurrent, userIdDialogue }) => {
         ) : messages.length === 0 ? (
           <EmptyDialogue />
         ) : (
-          messages.map((message) => {
+          messages.map((message, index) => {
             return (
               <Message
+                // User can't delete explicitly messages, so messages there will always have the same index
+                key={index}
                 message={message.message}
                 uid={message.uid}
                 photoURL={message.photoURL}
+                createdAt={message.createdAt}
               />
             );
           })
