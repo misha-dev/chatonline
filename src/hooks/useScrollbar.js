@@ -2,11 +2,12 @@ import OverlayScrollbars from "overlayscrollbars";
 import { useEffect } from "react";
 
 const options = {};
+export let scrollBars;
 export const useScrollbar = (root, hasScroll) => {
   useEffect(() => {
-    let scrollBars;
     if (root.current && hasScroll) {
       scrollBars = OverlayScrollbars(root.current, options);
+      scrollBars.scroll([0, "100%"], 500);
     }
 
     return () => {

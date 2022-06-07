@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { firestore } from "../../../firebase/config";
-import { useScrollbar } from "../../../hooks/useScrollbar";
+import { scrollBars, useScrollbar } from "../../../hooks/useScrollbar";
 import { hashDialogueId } from "../../../utils/hashDialogueId";
 import { LoaderMessages } from "../../Loaders/LoaderMessages/LoaderMessages";
 import cl from "./Dialogue.module.css";
@@ -23,7 +23,9 @@ export const Dialogue = ({ userCurrent, userIdDialogue }) => {
   console.log("render");
 
   const scroll = messages?.length > 10;
-
+  if (scrollBars) {
+    scrollBars.scroll([0, "100%"], 100);
+  }
   useScrollbar(messagesForScrollbar, scroll);
 
   return (
