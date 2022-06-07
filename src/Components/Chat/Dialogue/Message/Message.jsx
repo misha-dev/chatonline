@@ -17,7 +17,7 @@ export const Message = ({ uid, photoURL, message, createdAt }) => {
       {currentUserMessage ? (
         <>
           <div className={cl.message}>
-            {message}{" "}
+            {message}
             <div className={`${cl.dateCreation} ${cl.dateCreationRight}`}>
               {dateCreation}
             </div>

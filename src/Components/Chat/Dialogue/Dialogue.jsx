@@ -24,7 +24,7 @@ export const Dialogue = ({ userCurrent, userIdDialogue }) => {
 
   const scroll = messages?.length > 10;
   if (scrollBars) {
-    scrollBars.scroll([0, "100%"], 100);
+    scrollBars.scroll([0, "100%"], 70);
   }
   useScrollbar(messagesForScrollbar, scroll);
 

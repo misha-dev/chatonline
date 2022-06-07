@@ -7,7 +7,9 @@ const toTwoLetters = (date) => {
 };
 
 export const toDateTime = (date) => {
-  return `${date.getDay()}/${date.getMonth()}/${date.getFullYear()} ${toTwoLetters(
-    date.getHours()
-  )}:${toTwoLetters(date.getMinutes())}`;
+  return `${date.getDate()}/${
+    date.getMonth() + 1
+  }/${date.getFullYear()} ${toTwoLetters(date.getHours())}:${toTwoLetters(
+    date.getMinutes()
+  )}`;
 };
