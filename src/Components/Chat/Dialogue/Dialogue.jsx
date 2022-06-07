@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { IoMdSend } from "react-icons/io";
 import { firebase, firestore } from "../../../firebase/config";
+import { useScrollbar } from "../../../hooks/useScrollbar";
 import { hashDialogueId } from "../../../utils/hashDialogueId";
 import { LoaderMessages } from "../../Loaders/LoaderMessages/LoaderMessages";
 import cl from "./Dialogue.module.css";
@@ -10,6 +11,7 @@ import { Message } from "./Message/Message";
 
 export const Dialogue = ({ userCurrent, userIdDialogue }) => {
   const [message, setMessage] = useState("");
+  const messagesForScrollbar = useRef();
   const hashId = hashDialogueId(userCurrent.uid, userIdDialogue);
   const [messages, messagesLoading] = useCollectionData(
     firestore
@@ -17,6 +19,10 @@ export const Dialogue = ({ userCurrent, userIdDialogue }) => {
       .where("access", "==", hashId)
       .orderBy("createdAt")
   );
+
+  const scroll = messages?.length > 10;
+
+  useScrollbar(messagesForScrollbar, scroll);
   console.log(messages);
   const sendMessage = () => {
     if (message.trim() === "") {
@@ -47,18 +53,23 @@ export const Dialogue = ({ userCurrent, userIdDialogue }) => {
         ) : messages.length === 0 ? (
           <EmptyDialogue />
         ) : (
-          messages.map((message, index) => {
-            return (
-              <Message
-                // User can't delete explicitly messages, so messages there will always have the same index
-                key={index}
-                message={message.message}
-                uid={message.uid}
-                photoURL={message.photoURL}
-                createdAt={message.createdAt}
-              />
-            );
-          })
+          <div
+            ref={messagesForScrollbar}
+            className={cl.messageWrapperForScroll}
+          >
+            {messages.map((message, index) => {
+              return (
+                <Message
+                  // User can't delete explicitly messages, so messages there will always have the same index
+                  key={index}
+                  message={message.message}
+                  uid={message.uid}
+                  photoURL={message.photoURL}
+                  createdAt={message.createdAt}
+                />
+              );
+            })}
+          </div>
         )}
       </div>
 

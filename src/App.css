@@ -4,3 +4,18 @@ body {
   background-color: whitesmoke;
   font-family: "Roboto", sans-serif;
 }
+
+.App
+  .os-theme-dark
+  .os-scrollbar-vertical
+  > .os-scrollbar-track
+  > .os-scrollbar-handle {
+  background-color: rgba(47, 112, 210, 0.6);
+}
+.App
+  .os-theme-dark
+  .os-scrollbar-vertical
+  > .os-scrollbar-track
+  > .os-scrollbar-handle.active {
+  background-color: rgba(47, 112, 210, 1);
+}
