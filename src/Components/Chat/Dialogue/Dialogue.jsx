@@ -35,6 +35,7 @@ export const Dialogue = ({ userCurrent, userIdDialogue }) => {
   };
   const handleKeyEnter = (e) => {
     if (e.key === "Enter") {
+      e.preventDefault();
       sendMessage();
     }
   };
@@ -65,7 +66,7 @@ export const Dialogue = ({ userCurrent, userIdDialogue }) => {
           onChange={(e) => {
             setMessage(e.target.value);
           }}
-          onKeyUp={handleKeyEnter}
+          onKeyDown={handleKeyEnter}
           className={cl.message}
           placeholder="Enter a message"
         ></textarea>
