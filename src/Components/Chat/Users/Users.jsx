@@ -24,7 +24,8 @@ export const Users = ({ userCurrent, firestore, setUserIdDialogue }) => {
 
               <div className={cl.userCard}>
                 <div className={cl.wrapperImg}>
-                  <img alt="" src={user.photoURL} />
+                  <img alt="" src={user.photoURL}></img>
+                  <div className={`${cl.online}`}></div>
                 </div>
 
                 <div className={cl.userName}>{user.displayName}</div>

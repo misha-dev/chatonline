@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { firestore } from "../../firebase/config";
 import { useAuth } from "../../hooks/useAuth";
 import { BlankDialogue } from "./BlankDialogue/BlankDialogue";
@@ -9,6 +9,19 @@ import { Users } from "./Users/Users";
 export const Chat = () => {
   const userCurrent = useAuth();
   const [userIdDialogue, setUserIdDialogue] = useState(-1);
+  useEffect(() => {
+    const user = firestore.collection("users").doc(userCurrent.uid);
+    const setUserOffline = () => {
+      user.update({ online: false });
+    };
+    user.update({
+      online: true,
+    });
+    window.addEventListener("beforeunload", setUserOffline);
+    return () => {
+      window.removeEventListener("beforeunload", setUserOffline);
+    };
+  }, []);
 
   return (
     <div className={cl.chatWrapper}>

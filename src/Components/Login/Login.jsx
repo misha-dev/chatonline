@@ -12,8 +12,8 @@ export const Login = () => {
       displayName: user.displayName,
       email: user.email,
       photoURL: user.photoURL,
+      online: false,
     });
-
   };
 
   return (
