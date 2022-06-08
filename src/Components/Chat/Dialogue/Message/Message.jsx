@@ -16,7 +16,7 @@ export const Message = ({ uid, photoURL, message, createdAt }) => {
     >
       {currentUserMessage ? (
         <>
-          <div className={cl.message}>
+          <div className={`${cl.message} ${cl.messageRight}`}>
             {message}
             <div className={`${cl.dateCreation} ${cl.dateCreationRight}`}>
               {dateCreation}
@@ -27,7 +27,7 @@ export const Message = ({ uid, photoURL, message, createdAt }) => {
       ) : (
         <>
           <img style={{ marginRight: "5px" }} src={photoURL} alt="" />
-          <div className={cl.message}>
+          <div className={`${cl.message} ${cl.messageLeft}`}>
             {message}{" "}
             <div className={`${cl.dateCreation} ${cl.dateCreationLeft}`}>
               {dateCreation}

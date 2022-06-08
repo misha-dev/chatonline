@@ -27,8 +27,15 @@
   position: relative;
   padding: 10px 15px;
   border-radius: 35px;
-  background-color: #3891fc;
   max-width: 80%;
+}
+
+.messageRight {
+  background-color: #3891fc;
+}
+
+.messageLeft {
+  background-color: #2f70d2;
 }
 
 .dateCreation {
