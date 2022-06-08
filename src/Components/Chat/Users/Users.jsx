@@ -25,7 +25,12 @@ export const Users = ({ userCurrent, firestore, setUserIdDialogue }) => {
               <div className={cl.userCard}>
                 <div className={cl.wrapperImg}>
                   <img alt="" src={user.photoURL}></img>
-                  <div className={`${cl.online}`}></div>
+                  <div
+                    style={{
+                      backgroundColor: user.online ? "#2f70d2" : "white",
+                    }}
+                    className={cl.online}
+                  ></div>
                 </div>
 
                 <div className={cl.userName}>{user.displayName}</div>
