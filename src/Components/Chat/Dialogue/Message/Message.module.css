@@ -41,10 +41,11 @@
 
 .dateCreation {
   position: absolute;
-  top: 100%;
+  top: 107%;
   color: grey;
   width: 120px;
   font-size: 0.57rem;
+  line-height: 0.57rem;
 }
 
 .dateCreationRight {
