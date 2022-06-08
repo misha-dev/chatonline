@@ -14,12 +14,21 @@ export const Chat = () => {
     const setUserOffline = () => {
       user.update({ online: false });
     };
-    user.update({
-      online: true,
-    });
+
+    const setUserOnline = () => {
+      user.update({
+        online: true,
+      });
+    };
+    setUserOnline();
+
     window.addEventListener("beforeunload", setUserOffline);
+    window.addEventListener("blur", setUserOffline);
+    window.addEventListener("focus", setUserOnline);
     return () => {
       window.removeEventListener("beforeunload", setUserOffline);
+      window.removeEventListener("blur", setUserOffline);
+      window.removeEventListener("focus", setUserOnline);
     };
   }, []);
 
