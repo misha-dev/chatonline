@@ -28,7 +28,7 @@ export const Message = ({ uid, photoURL, message, createdAt }) => {
         <>
           <img style={{ marginRight: "5px" }} src={photoURL} alt="" />
           <div className={`${cl.message} ${cl.messageLeft}`}>
-            {message}{" "}
+            {message}
             <div className={`${cl.dateCreation} ${cl.dateCreationLeft}`}>
               {dateCreation}
             </div>

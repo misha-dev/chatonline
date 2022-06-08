@@ -1,11 +1,13 @@
 import firebase from "firebase";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { IoMdSend } from "react-icons/io";
 import { firestore } from "../../../../firebase/config";
+import { scrollBars } from "../../../../hooks/useScrollbar";
 import cl from "./SendMessage.module.css";
 
 export const SendMessage = ({ hashId, userCurrent }) => {
   const [message, setMessage] = useState("");
+  const inputMessageArea = useRef();
   const sendMessage = () => {
     if (message.trim() === "") {
       setMessage("");
@@ -19,6 +21,9 @@ export const SendMessage = ({ hashId, userCurrent }) => {
       message: message.trim(),
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
     });
+
+    inputMessageArea?.current?.focus();
+
     setMessage("");
   };
   const handleKeyEnter = (e) => {
@@ -31,6 +36,10 @@ export const SendMessage = ({ hashId, userCurrent }) => {
   return (
     <div className={cl.sendMessageWrapper}>
       <textarea
+        onFocus={() => {
+          scrollBars?.scroll([0, "100%"], 70);
+        }}
+        ref={inputMessageArea}
         autoComplete="off"
         value={message}
         onChange={(e) => {
