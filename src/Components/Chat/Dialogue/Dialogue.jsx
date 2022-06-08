@@ -11,7 +11,8 @@ import { Message } from "./Message/Message";
 import { SendMessage } from "./SendMessage/SendMessage";
 
 export const Dialogue = ({ userCurrent, userIdDialogue }) => {
-  const messagesForScrollbar = useRef();
+  const messagesForScrollbar = useRef(null);
+  const innerBlockForScroll = useRef(null);
   const hashId = hashDialogueId(userCurrent.uid, userIdDialogue);
   const [messages, messagesLoading] = useCollectionData(
     firestore
@@ -20,13 +21,11 @@ export const Dialogue = ({ userCurrent, userIdDialogue }) => {
       .orderBy("createdAt")
   );
 
-  console.log("render");
-
-  const scroll = messages?.length > 10;
+  const toScroll = messages?.length > 1;
   if (scrollBars) {
     scrollBars.scroll([0, "100%"], 70);
   }
-  useScrollbar(messagesForScrollbar, scroll);
+  useScrollbar(messagesForScrollbar, toScroll);
 
   return (
     <div className={cl.dialogueWrapper}>
@@ -41,7 +40,7 @@ export const Dialogue = ({ userCurrent, userIdDialogue }) => {
             className={cl.messageWrapperForScroll}
           >
             {/* for scrollbar to render correctly */}
-            <div>
+            <div ref={innerBlockForScroll}>
               {messages.map((message, index) => {
                 return (
                   <Message
