@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { firestore } from "../../../firebase/config";
 import { scrollBars, useScrollbar } from "../../../hooks/useScrollbar";
@@ -22,10 +22,12 @@ export const Dialogue = ({ userCurrent, userIdDialogue }) => {
   );
 
   const toScroll = messages?.length > 1;
-  if (scrollBars) {
-    scrollBars.scroll([0, "100%"], 70);
-  }
+
   useScrollbar(messagesForScrollbar, toScroll);
+  // Solved problem with rendering of message from another user
+  useEffect(() => {
+    scrollBars?.scroll([0, "100%"], 70);
+  });
 
   return (
     <div className={cl.dialogueWrapper}>

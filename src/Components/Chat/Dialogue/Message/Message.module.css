@@ -41,7 +41,7 @@
 
 .dateCreation {
   position: absolute;
-  top: 107%;
+  top: calc(100% + 3.5px);
   color: grey;
   width: 120px;
   font-size: 0.57rem;

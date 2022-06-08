@@ -6,6 +6,7 @@ export const Users = ({ userCurrent, firestore, setUserIdDialogue }) => {
   const [users] = useCollectionData(
     firestore.collection("users").where("uid", "!=", userCurrent.uid)
   );
+
   return (
     <div className={cl.usersWrapper}>
       {users ? (
