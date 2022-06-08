@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { IoIosLogOut } from "react-icons/io";
-import { auth } from "../../firebase/config";
+import { auth, firestore } from "../../firebase/config";
 import { useAuth } from "../../hooks/useAuth";
 import cl from "./User.module.css";
 
@@ -25,6 +25,10 @@ export const User = () => {
           className={cl.option}
           onClick={() => {
             auth.signOut();
+            firestore
+              .collection("users")
+              .doc(user.uid)
+              .update({ online: false });
           }}
         >
           Logout <IoIosLogOut style={{ marginLeft: "5px" }} />
