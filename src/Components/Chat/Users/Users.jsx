@@ -1,4 +1,6 @@
+import { useEffect, useRef } from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
+import { scrollBars, useScrollbar } from "../../../hooks/useScrollbar";
 import { LoaderUsers } from "../../Loaders/LoaderUsers/LoaderUsers";
 import cl from "./Users.module.css";
 
@@ -7,8 +9,15 @@ export const Users = ({ userCurrent, firestore, setUserIdDialogue }) => {
     firestore.collection("users").where("uid", "!=", userCurrent.uid)
   );
 
+  const listOfUsersToScroll = useRef();
+  useScrollbar(listOfUsersToScroll, users?.length > 1);
+  // Solved problem with rendering of message from another user
+  useEffect(() => {
+    scrollBars?.scroll([0, "100%"], 70);
+  });
+
   return (
-    <div className={cl.usersWrapper}>
+    <div ref={listOfUsersToScroll} className={cl.usersWrapper}>
       {users ? (
         users.map((user) => {
           return (
