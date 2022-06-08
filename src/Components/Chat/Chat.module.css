@@ -8,3 +8,10 @@
   width: 82vw;
   padding: 30px 40px;
 }
+
+@media (max-width: 1350px) {
+  .dialogueArea {
+    width: 86vw;
+    padding: 15px 20px;
+  }
+}

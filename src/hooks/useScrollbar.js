@@ -7,6 +7,7 @@ export const useScrollbar = (root, hasScroll) => {
   useEffect(() => {
     if (root.current && hasScroll) {
       scrollBars = OverlayScrollbars(root.current, options);
+      scrollBars.options("overflowBehavior.x", "hidden");
       scrollBars.scroll([0, "100%"], 500);
     }
 

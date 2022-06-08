@@ -55,3 +55,14 @@
 .dateCreationLeft {
   left: 3px;
 }
+
+@media (max-width: 1350px) {
+  .messageWrapper img {
+    display: none;
+  }
+
+  .message {
+    line-height: 1rem;
+    font-size: 0.9rem;
+  }
+}

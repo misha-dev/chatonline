@@ -13,6 +13,7 @@ export const Menu = () => {
         </Link>
         <Link to={"/chatonline"}>
           <img
+            className={cl.chatImage}
             src={process.env.PUBLIC_URL + "/images/chat.png"}
             alt="Chat image"
           />

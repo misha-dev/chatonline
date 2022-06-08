@@ -38,8 +38,8 @@ input[type="radio"] {
 }
 .userCard img {
   position: relative;
-  height: 40px;
-  width: 40px;
+  height: 100%;
+  width: 100%;
   border-radius: 50%;
 }
 
@@ -74,4 +74,32 @@ input[type="radio"]:checked + div {
   border-radius: 50%;
   border: 0.5px solid #00399b;
   transition: background-color 0.2s linear;
+}
+
+@media (max-width: 1350px) {
+  .usersWrapper {
+    width: 14vw;
+  }
+
+  .userCard {
+    padding: 5px 5px 5px 10px;
+  }
+
+  .wrapperImg {
+    height: 32px;
+    width: 32px;
+  }
+
+  .userName {
+    display: none;
+  }
+}
+@media (max-width: 400px) {
+
+
+
+  .wrapperImg {
+    height: 25px;
+    width: 25px;
+  }
 }
