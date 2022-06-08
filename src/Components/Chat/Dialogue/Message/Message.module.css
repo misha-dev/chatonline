@@ -28,6 +28,7 @@
   padding: 10px 15px;
   border-radius: 35px;
   max-width: 80%;
+  line-height: 1.15rem;
 }
 
 .messageRight {
@@ -40,7 +41,7 @@
 
 .dateCreation {
   position: absolute;
-  top: 110%;
+  top: 100%;
   color: grey;
   width: 120px;
   font-size: 0.57rem;
