@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { firestore } from "../../../firebase/config";
 import { scrollBars, useScrollbar } from "../../../hooks/useScrollbar";
@@ -13,6 +13,7 @@ import { SendMessage } from "./SendMessage/SendMessage";
 export const Dialogue = ({ userCurrent, userIdDialogue }) => {
   const messagesForScrollbar = useRef(null);
   const innerBlockForScroll = useRef(null);
+  const [companionName, setCompanionName] = useState("");
   const hashId = hashDialogueId(userCurrent.uid, userIdDialogue);
   const [messages, messagesLoading] = useCollectionData(
     firestore
@@ -20,6 +21,14 @@ export const Dialogue = ({ userCurrent, userIdDialogue }) => {
       .where("access", "==", hashId)
       .orderBy("createdAt")
   );
+
+  firestore
+    .collection("users")
+    .doc(userIdDialogue)
+    .get()
+    .then((snapshot) => {
+      setCompanionName(snapshot.data().displayName);
+    });
 
   const toScroll = messages?.length > 1;
 
@@ -32,6 +41,7 @@ export const Dialogue = ({ userCurrent, userIdDialogue }) => {
   return (
     <div className={cl.dialogueWrapper}>
       <div className={cl.messagesWrapper}>
+        <div className={cl.companionName}>{companionName}</div>
         {messagesLoading ? (
           <LoaderMessages />
         ) : messages.length === 0 ? (
