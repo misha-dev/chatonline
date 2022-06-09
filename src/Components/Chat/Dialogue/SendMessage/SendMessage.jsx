@@ -37,7 +37,9 @@ export const SendMessage = ({ hashId, userCurrent }) => {
     <div className={cl.sendMessageWrapper}>
       <textarea
         onFocus={() => {
-          scrollBars?.scroll([0, "100%"], 70);
+          setTimeout(() => {
+            scrollBars?.scroll([0, "100%"], 70);
+          }, 500);
         }}
         ref={inputMessageArea}
         autoComplete="off"
