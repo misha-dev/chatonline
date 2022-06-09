@@ -1,5 +1,6 @@
 import firebase from "firebase";
 import { useRef, useState } from "react";
+import { isMobile } from "react-device-detect";
 import { IoMdSend } from "react-icons/io";
 import { firestore } from "../../../../firebase/config";
 import { scrollBars } from "../../../../hooks/useScrollbar";
@@ -37,9 +38,11 @@ export const SendMessage = ({ hashId, userCurrent }) => {
     <div className={cl.sendMessageWrapper}>
       <textarea
         onFocus={() => {
-          setTimeout(() => {
-            scrollBars?.scroll([0, "100%"], 70);
-          }, 500);
+          if (isMobile) {
+            setTimeout(() => {
+              scrollBars?.scroll([0, "100%"], 70);
+            }, 500);
+          }
         }}
         ref={inputMessageArea}
         autoComplete="off"
