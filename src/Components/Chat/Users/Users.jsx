@@ -15,34 +15,37 @@ export const Users = ({ userCurrent, firestore, setUserIdDialogue }) => {
   return (
     <div ref={listOfUsersToScroll} className={cl.usersWrapper}>
       {users ? (
-        users.map((user) => {
-          return (
-            <label key={user.uid}>
-              <input
-                onChange={() => {
-                  setUserIdDialogue(user.uid);
-                }}
-                value={user.uid}
-                type="radio"
-                name="userDialogue"
-              />
+        // for scroll to work correctly
+        <div>
+          {users.map((user) => {
+            return (
+              <label key={user.uid}>
+                <input
+                  onChange={() => {
+                    setUserIdDialogue(user.uid);
+                  }}
+                  value={user.uid}
+                  type="radio"
+                  name="userDialogue"
+                />
 
-              <div className={cl.userCard}>
-                <div className={cl.wrapperImg}>
-                  <img alt="" src={user.photoURL}></img>
-                  <div
-                    style={{
-                      backgroundColor: user.online ? "#2f70d2" : "white",
-                    }}
-                    className={cl.online}
-                  ></div>
+                <div className={cl.userCard}>
+                  <div className={cl.wrapperImg}>
+                    <img alt="" src={user.photoURL}></img>
+                    <div
+                      style={{
+                        backgroundColor: user.online ? "#2f70d2" : "white",
+                      }}
+                      className={cl.online}
+                    ></div>
+                  </div>
+
+                  <div className={cl.userName}>{user.displayName}</div>
                 </div>
-
-                <div className={cl.userName}>{user.displayName}</div>
-              </div>
-            </label>
-          );
-        })
+              </label>
+            );
+          })}
+        </div>
       ) : (
         <LoaderUsers />
       )}
