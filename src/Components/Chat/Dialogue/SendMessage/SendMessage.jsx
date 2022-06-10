@@ -6,7 +6,7 @@ import { firestore } from "../../../../firebase/config";
 import { scrollBars } from "../../../../hooks/useScrollbar";
 import cl from "./SendMessage.module.css";
 
-export const SendMessage = ({ hashId, userCurrent }) => {
+export const SendMessage = ({ hashId, userCurrent, userIdDialogue }) => {
   const [message, setMessage] = useState("");
   const inputMessageArea = useRef();
   const sendMessage = () => {
@@ -17,6 +17,8 @@ export const SendMessage = ({ hashId, userCurrent }) => {
     firestore.collection("messages").add({
       access: hashId,
       uid: userCurrent.uid,
+      toUser: userIdDialogue,
+      users: [userCurrent.uid, userIdDialogue],
       displayName: userCurrent.displayName,
       photoURL: userCurrent.photoURL,
       message: message.trim(),

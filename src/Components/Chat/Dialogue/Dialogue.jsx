@@ -18,6 +18,7 @@ export const Dialogue = ({ userCurrent, userIdDialogue }) => {
   const [messages, messagesLoading] = useCollectionData(
     firestore
       .collection("messages")
+      .where("users", "array-contains", userCurrent.uid)
       .where("access", "==", hashId)
       .orderBy("createdAt")
   );
@@ -70,7 +71,11 @@ export const Dialogue = ({ userCurrent, userIdDialogue }) => {
         )}
       </div>
 
-      <SendMessage hashId={hashId} userCurrent={userCurrent} />
+      <SendMessage
+        hashId={hashId}
+        userIdDialogue={userIdDialogue}
+        userCurrent={userCurrent}
+      />
     </div>
   );
 };
