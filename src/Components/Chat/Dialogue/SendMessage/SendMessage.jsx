@@ -1,5 +1,5 @@
 import firebase from "firebase";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
 import { IoMdSend } from "react-icons/io";
 import { firestore } from "../../../../firebase/config";
@@ -35,6 +35,12 @@ export const SendMessage = ({ hashId, userCurrent, userIdDialogue }) => {
       sendMessage();
     }
   };
+
+  useEffect(() => {
+    if (!isMobile) {
+      inputMessageArea?.current?.focus();
+    }
+  });
 
   return (
     <div className={cl.sendMessageWrapper}>
