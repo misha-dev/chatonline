@@ -62,6 +62,10 @@
     display: none;
   }
 
+  .messageWrapper {
+    padding-left: 5px;
+  }
+
   .message {
     line-height: 1rem;
     font-size: 0.9rem;
