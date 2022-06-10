@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/chatonline/static/css/main.70b4b22d.css",
-    "main.js": "/chatonline/static/js/main.449263aa.js",
+    "main.js": "/chatonline/static/js/main.be960a8c.js",
     "index.html": "/chatonline/index.html",
     "main.70b4b22d.css.map": "/chatonline/static/css/main.70b4b22d.css.map",
-    "main.449263aa.js.map": "/chatonline/static/js/main.449263aa.js.map"
+    "main.be960a8c.js.map": "/chatonline/static/js/main.be960a8c.js.map"
   },
   "entrypoints": [
     "static/css/main.70b4b22d.css",
-    "static/js/main.449263aa.js"
+    "static/js/main.be960a8c.js"
   ]
 }
