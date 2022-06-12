@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Chat } from "./Components/Chat/Chat";
 import { Layout } from "./Components/Layout/Layout";
@@ -22,6 +22,7 @@ function App() {
               <Route index element={<Login />} />
             )}
           </Route>
+          <Route path="*" element={<Navigate to="/chatonline" replace />} />
         </Routes>
       ) : (
         <Loader />
